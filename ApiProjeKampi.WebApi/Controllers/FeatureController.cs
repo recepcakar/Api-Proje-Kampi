@@ -10,22 +10,22 @@ namespace ApiProjeKampi.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FeatureController : ControllerBase
+    public class FeaturesController : ControllerBase
     {
         private readonly IMapper _mapper;
 
         private readonly ApiContext _context;
-        public FeatureController(IMapper mapper,ApiContext apiContext)
+        public FeaturesController(IMapper mapper,ApiContext Context)
         {
             _mapper = mapper;
-            _context = apiContext;
+            _context = Context;
 
         }
 
         [HttpGet]
-        public IActionResult GetList() 
+        public IActionResult FeatureList() 
         {
-        var values=_context.Features.ToList();
+            var values=_context.Features.ToList();
             return Ok(_mapper.Map<List<ResultFeatureDto>>(values));
          
         }
@@ -35,13 +35,13 @@ namespace ApiProjeKampi.WebApi.Controllers
             var value = _mapper.Map<Feature>(createFeatureDto);
             _context.Features.Add(value);
             _context.SaveChanges();
-            return Ok(value);
+            return Ok("ekleme başarılı");
         }
         [HttpDelete]
         public IActionResult DeleteFeature(int id)
         {
-            var values=_context.Features.Find( id);
-            _context.Features.Remove(values);
+            var value=_context.Features.Find( id);
+            _context.Features.Remove(value);
             _context.SaveChanges();
             return Ok("Silme işlemi başarılı "  );
         }
@@ -49,7 +49,7 @@ namespace ApiProjeKampi.WebApi.Controllers
         public IActionResult GetFeature(int id)
         {
             var values= _context.Features.Find( id);
-            return Ok(_mapper.Map<List<GetByIdFeatureDto>>(values));
+            return Ok(_mapper.Map<GetByIdFeatureDto>(values));
         }
         [HttpPut]
         public IActionResult UpdateFeature(UpdateFeatureDto updateFeatureDto)

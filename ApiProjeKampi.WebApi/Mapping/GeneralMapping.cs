@@ -10,7 +10,7 @@ namespace ApiProjeKampi.WebApi.Mapping
         public GeneralMapping()
         {
 
-            CreateMap<Feature,CreateFeatureDto>().ReverseMap();
+          CreateMap<Feature,CreateFeatureDto>().ReverseMap();
           CreateMap<Feature,UpdateFeatureDto>().ReverseMap();
           CreateMap<Feature,ResultFeatureDto>().ReverseMap();
           CreateMap<Feature,GetByIdFeatureDto>().ReverseMap();

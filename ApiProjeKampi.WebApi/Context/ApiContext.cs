@@ -7,7 +7,7 @@ namespace ApiProjeKampi.WebApi.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=RecepsLenovo;Database=ApiYummyDb1;User Id=sa;Password=12;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer("Server=RecepsLenovo;Database=ApiYummyDb1;User Id=user;Password=sifre;TrustServerCertificate=True;");
 
         }
         public DbSet<Contact>  Contacts { get; set; }

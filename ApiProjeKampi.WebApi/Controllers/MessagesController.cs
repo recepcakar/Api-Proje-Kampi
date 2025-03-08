@@ -23,7 +23,8 @@ namespace ApiProjeKampi.WebApi.Controllers
         public IActionResult MessageList() 
         {
             var value=_context.Messages.ToList();
-            return Ok(_mapper.Map<List<ResultMessageDto>>(value));
+            return Ok(_mapper.Map<List<ResultMessageDto>>(value));   //valuede bütün değerler var el ile tektek c.id=value.id vs yapıyorudk
+            //şimdi automapper bizim için resultmessagedto tipinde liste döndürüyor valuedeki değerlerle
 
         }
         [HttpPost]
@@ -46,6 +47,7 @@ namespace ApiProjeKampi.WebApi.Controllers
         [HttpGet("GetMessage")]
         public IActionResult GetMessage(int id)
         {
+     
             var value = _context.Messages.Find(id);
             return Ok(_mapper.Map<GetByIdMessageDto>(value));
 
@@ -58,5 +60,6 @@ namespace ApiProjeKampi.WebApi.Controllers
             _context.SaveChanges();
             return Ok("güncelleme başarılı");
         }
+       
     }
 }
